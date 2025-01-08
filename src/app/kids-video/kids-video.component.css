@@ -1,0 +1,27 @@
+.mat-card{
+    margin: 20px;
+}
+.count-card{
+width:24%;
+margin: 5px;
+padding: 20px;
+}
+.bg-success{
+    background-color: lightgreen;
+}
+.bg-warning{
+    background-color: lightcoral;
+}
+.bg-info{
+    background-color: lightblue;
+}
+.bg-primary{
+    background-color: rgb(0, 252, 21);
+}
+.totalvideo{
+    width:100%;
+    text-align: center;
+    margin: 5px;
+    padding: 20px;
+    border: 2px solid tomato;
+}
