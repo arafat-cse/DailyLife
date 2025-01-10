@@ -32,7 +32,6 @@ import { MatSort } from '@angular/material/sort';
     EditComponent,
     ViewComponent,
     DeleteComponent,
-    
   ],
   imports: [
     CommonModule,
@@ -52,7 +51,8 @@ import { MatSort } from '@angular/material/sort';
     MatSnackBarModule,
     ReactiveFormsModule,
     MatPaginator,
-    MatSort
+    MatSort,
+    
 
   ]
 })

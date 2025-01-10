@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { VideoList } from '../../interface/Post';
 import { Subject, takeUntil } from 'rxjs';
 import { KidsVideoService } from '../../services/kids-video.service';
@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-view',
@@ -24,7 +25,7 @@ export class ViewComponent {
     private matSnackBar:MatSnackBar){
 
     
-      this.KidsVideoService.getPostData()
+      this.KidsVideoService.getKidsVideo()
       .pipe(takeUntil(this.destory$)).subscribe((data:VideoList[])=>{
         this.showSuccessMessage("Credit Card Loaded Successfully")
       this.kidsVideoDetails = data;
@@ -34,6 +35,11 @@ export class ViewComponent {
       })
     }
     dataSource = new MatTableDataSource(this.kidsVideoDetails);
+    displayColumns = ["userId","title","body"]
+
+
+    selection = new SelectionModel(true,[]);
+  
   
     showSuccessMessage(message: string){
       this.matSnackBar.open(message, 'close',{

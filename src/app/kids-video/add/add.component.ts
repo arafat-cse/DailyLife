@@ -4,13 +4,17 @@ import { Route, Router } from '@angular/router';
 // import { VideoList } from '../../interface/video-list';
 import { VideoList } from '../../interface/Post';
 import { Subscription } from 'rxjs/internal/Subscription';
-
+import { Client, Databases, ID } from "appwrite";
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
   styleUrl: './add.component.css'
 })
 export class AddComponent {
+
+
+  
+
 
   private subcription: Subscription | undefined;
   constructor(private KidsVideoService:KidsVideoService,
@@ -33,14 +37,14 @@ export class AddComponent {
     CreatesVideoList:VideoList[] = [];
 
     saveKidsVideo(){
-      this.KidsVideoService.getKidsVideo().subscribe((data:VideoList[])=>{
-        this.CreatesVideoList = data;
-        //this.newKidsVideo.id = this.CreatesVideoList.length+1;
+  
+
+         
         this.subcription = this.KidsVideoService.createKidsVideo(this.newKidsVideo).subscribe(data =>{
-          //alert("Create Card add");
+         
           
-          this.router.navigate(['video List']);
-        })
+          this.router.navigate(['kids-video/view']);
+       
        console.log(this.newKidsVideo);
       })
        
