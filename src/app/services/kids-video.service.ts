@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { VideoList} from '../interface/video-list'
+// import { VideoList} from '../interface/video-list'
+import { VideoList} from '../interface/Post'
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class KidsVideoService {
 
-  private apiUrl ="http://localhost:3000/Creditcards";
+  private apiUrl ="https://jsonplaceholder.typicode.com/posts";
   constructor(private httpClient:HttpClient ) { }
   
   //Crud Funtionallity
@@ -21,7 +22,9 @@ export class KidsVideoService {
   getKidsVideo():Observable<VideoList[]>{
     return this.httpClient.get<VideoList[]>(this.apiUrl);
   }
-
+  getPostData():Observable<VideoList[]>{
+    return this.httpClient.get<VideoList[]>(this.apiUrl);
+  }
   //Get Specific id Kids Video
   getKidsVideoId(id:number):Observable<VideoList>{
     const url = `${this.apiUrl}/${id}`;
@@ -30,7 +33,7 @@ export class KidsVideoService {
 
   //update Functionality
   updateKidsVideo(VideoList:VideoList):Observable<VideoList>{
-    const url = `${this.apiUrl}/${VideoList.id}`
+    const url = `${this.apiUrl}/${VideoList.userId}`
     return this.httpClient.put<VideoList>(url,VideoList);
   }
 
