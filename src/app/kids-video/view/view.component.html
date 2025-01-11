@@ -1,7 +1,7 @@
 
 <mat-card class="mat-card">
     <mat-card-header>
-        <mat-card-title> List All Credit Cards</mat-card-title>
+        <mat-card-title> List of Kids Video</mat-card-title>
     </mat-card-header>
     <mat-card-content>
         <table mat-table [dataSource]="dataSource" matStort>
@@ -11,20 +11,44 @@
                     <mat-checkbox></mat-checkbox>
                 </td>
             </ng-component> -->
+            <ng-component matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef>Id</th>
+                <td mat-cell *matCellDef="let element">{{element.id}}</td>
+            </ng-component> 
 
             <ng-component matColumnDef="userId">
-                <th mat-header-cell *matHeaderCellDef>Id</th>
+                <th mat-header-cell *matHeaderCellDef>userId</th>
                 <td mat-cell *matCellDef="let element">{{element.userId}}</td>
             </ng-component>
 
             <ng-component matColumnDef="title">
-                <th mat-header-cell *matHeaderCellDef>Name</th>
+                <th mat-header-cell *matHeaderCellDef>Video Title</th>
                 <td mat-cell *matCellDef="let element">{{element.title}}</td>
             </ng-component>
 
-            <ng-component matColumnDef="body">
+            <ng-component matColumnDef="categories">
+                <th mat-header-cell *matHeaderCellDef>categories</th>
+                <td mat-cell *matCellDef="let element">{{element.categories}}</td>
+            </ng-component>
+
+            <ng-component matColumnDef="description">
                 <th mat-header-cell *matHeaderCellDef>Description</th>
-                <td mat-cell *matCellDef="let element">{{element.body}}</td>
+                <td mat-cell *matCellDef="let element">{{element.description}}</td>
+            </ng-component>
+
+            <ng-component matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef>Actions</th>
+                <td mat-cell *matCellDef="let element">
+                    <a [routerLink]="['view',element.id]"> 
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="visibility_off"></mat-icon>
+                    </a> 
+                    <a [routerLink]="['edit',element.id]">
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="edit"></mat-icon>
+                    </a>
+                    <a [routerLink]="['delete',element.id]">
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon>
+                    </a>
+                </td>
             </ng-component>
 
                 <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>

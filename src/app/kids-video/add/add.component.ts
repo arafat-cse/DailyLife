@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { KidsVideoService } from '../../services/kids-video.service';
 import { Route, Router } from '@angular/router';
 // import { VideoList } from '../../interface/video-list';
-import { VideoList } from '../../interface/Post';
+// import { VideoList } from '../../interface/Post';
+import { videoList } from '../../interface/video-list';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { Client, Databases, ID } from "appwrite";
 @Component({
@@ -28,13 +29,21 @@ export class AddComponent {
     //   createDate: Date(),
     //   updateDate: Date(),
     // };
-   newKidsVideo:VideoList={
-    userId: "",
+   newKidsVideo:videoList={
+    id: "",
+    userId:"",
     title: "",
-    body: "",
+    description: "",
+    thumbnailUrl:"",
+    videoUrl: "",
+    categories:"",
+    educationalTags:"",
+    isFavorite:true,
+    isFeatured:false,
+    isActive:true,
     };
 
-    CreatesVideoList:VideoList[] = [];
+    CreatesVideoList:videoList[] = [];
 
     saveKidsVideo(){
   

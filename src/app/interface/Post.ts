@@ -1,5 +1,5 @@
-export interface VideoList{
-    userId: string;
-    title: string;
-    body: string;
-}
+// export interface VideoList{
+//     userId: string;
+//     title: string;
+//     body: string;
+// }

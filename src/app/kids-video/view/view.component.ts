@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { VideoList } from '../../interface/Post';
+// import { VideoList } from '../../interface/Post';
+import { videoList } from '../../interface/video-list';
 import { Subject, takeUntil } from 'rxjs';
 import { KidsVideoService } from '../../services/kids-video.service';
 import { ActivatedRoute } from '@angular/router';
@@ -16,7 +17,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 })
 export class ViewComponent {
 
-  kidsVideoDetails:VideoList[]=[];
+  kidsVideoDetails:videoList[]=[];
 
   private destory$:Subject<void> = new Subject<void>();
 
@@ -26,7 +27,7 @@ export class ViewComponent {
 
     
       this.KidsVideoService.getKidsVideo()
-      .pipe(takeUntil(this.destory$)).subscribe((data:VideoList[])=>{
+      .pipe(takeUntil(this.destory$)).subscribe((data:videoList[])=>{
         this.showSuccessMessage("Credit Card Loaded Successfully")
       this.kidsVideoDetails = data;
       this.dataSource = new MatTableDataSource(this.kidsVideoDetails);
@@ -35,7 +36,7 @@ export class ViewComponent {
       })
     }
     dataSource = new MatTableDataSource(this.kidsVideoDetails);
-    displayColumns = ["userId","title","body"]
+    displayColumns = ["id","userId","title","categories","description","actions"]
 
 
     selection = new SelectionModel(true,[]);

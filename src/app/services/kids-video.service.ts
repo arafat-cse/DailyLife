@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 // import { VideoList} from '../interface/video-list'
 import { environment } from '../../../src/environments/environment';
-import { VideoList} from '../interface/Post'
+// import { VideoList} from '../interface/Post'
+import { videoList } from '../interface/video-list';
 import { from, map, Observable } from 'rxjs';
 import { Client, Databases, ID, Query } from 'appwrite';
+import { Action } from 'rxjs/internal/scheduler/Action';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +30,7 @@ export class KidsVideoService {
 
   //   return from (documentPromise);
   // }
-  createKidsVideo(VideoList: VideoList): Observable<VideoList> {
+  createKidsVideo(VideoList: videoList): Observable<videoList> {
     const databaseId = environment.appwrite.databaseId;
     const collectionId = environment.appwrite.collectionId;
     return from(
@@ -38,9 +40,14 @@ export class KidsVideoService {
         collectionId,
         ID.unique(),
         {
+          id: VideoList.id,
           userId: VideoList.userId,
           title: VideoList.title,
-          body: VideoList.body,
+          categories: VideoList.categories,
+          description: VideoList.description,
+       
+         
+          // body: VideoList.body,
         }
       )
     ).pipe(
@@ -54,12 +61,7 @@ export class KidsVideoService {
     );
   }
 
-  //Get All Kids Video
-  // getKidsVideo():Observable<VideoList[]>{
-    
-  //   return this.httpClient.get<VideoList[]>(this.apiUrl);
-  // }
-  getKidsVideo(): Observable<VideoList[]> {
+  getKidsVideo(): Observable<videoList[]> {
     const databaseId = environment.appwrite.databaseId;
     const collectionId = environment.appwrite.collectionId;
     return from(
@@ -67,7 +69,7 @@ export class KidsVideoService {
     ).pipe(
       map((response: any) => {
         // Map the response to the desired type if needed
-        return response.documents as VideoList[];
+        return response.documents as videoList[];
       })
     );
   }
@@ -76,15 +78,15 @@ export class KidsVideoService {
   //   return this.httpClient.get<VideoList[]>(this.apiUrl);
   // }
   //Get Specific id Kids Video
-  getKidsVideoId(id:number):Observable<VideoList>{
+  getKidsVideoId(id:number):Observable<videoList>{
     const url = `${this.apiUrl}/${id}`;
-    return this.httpClient.get<VideoList>(url);
+    return this.httpClient.get<videoList>(url);
   }
 
   //update Functionality
-  updateKidsVideo(VideoList:VideoList):Observable<VideoList>{
+  updateKidsVideo(VideoList:videoList):Observable<videoList>{
     const url = `${this.apiUrl}/${VideoList.userId}`
-    return this.httpClient.put<VideoList>(url,VideoList);
+    return this.httpClient.put<videoList>(url,VideoList);
   }
 
   //delete Functionality

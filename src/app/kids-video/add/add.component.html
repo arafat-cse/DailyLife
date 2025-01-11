@@ -57,7 +57,7 @@
             <div class="form-group">
                 <mat-form-field class="half-with">
                     <label > Videlo body</label>
-                    <input matInput placeholder="Enter Your Video List" name="body" [(ngModel)]="newKidsVideo.body" required>
+                    <input matInput placeholder="Enter Your Video List" name="body" [(ngModel)]="newKidsVideo.description" required>
                     <mat-error *ngIf="kidsVideoForm.controls['body']?.touched && kidsVideoForm.controls['body']?.hasError('required')"> Description is required</mat-error>
                 </mat-form-field>
             </div>

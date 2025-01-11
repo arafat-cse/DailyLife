@@ -1,7 +1,13 @@
-// export interface VideoList{
-//     id: number;
-//     videolink: string;
-//     description: string;
-//     createDate: string;
-//     updateDate: string;
-// }
+export interface videoList{
+    id: string;
+    userId: string;
+    title: string;
+    description: string;
+    thumbnailUrl:string;
+    videoUrl: string;
+    categories:string;
+    educationalTags:string;
+    isFavorite:boolean;
+    isFeatured:boolean;
+    isActive:boolean;
+}
