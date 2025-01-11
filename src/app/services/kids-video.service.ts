@@ -24,7 +24,19 @@ export class KidsVideoService {
 
     this.databases = new Databases(this.client);
   }
+  private API_KEY = 'YOUR_YOUTUBE_API_KEY'; // Replace with your API key
+  private BASE_URL = 'https://www.googleapis.com/youtube/v3/videos';
 
+ 
+
+  getVideoMetadata(videoId: string): Observable<any> {
+    const params = {
+      part: 'snippet,contentDetails,statistics',
+      id: videoId,
+      key: this.API_KEY,
+    };
+    return this.httpClient.get(this.BASE_URL, { params });
+  }
   private apiUrl ="https://jsonplaceholder.typicode.com/posts";
  
 

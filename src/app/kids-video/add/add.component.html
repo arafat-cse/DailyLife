@@ -1,43 +1,18 @@
-<!-- <mat-card>
-    <mat-card-header>
-        <mat-card-title>Add  new Video </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <form #kidsVideoForm ="ngForm" (ngSubmit)="saveKidsVideo()">
-            <div class="form-group">
-                <mat-form-field class="half-with">
-                    <label > Videlo link</label>
-                    <input matInput placeholder="Enter Your Video List" name="videolink" [(ngModel)]="newKidsVideo.videolink" required>
-                    <mat-error *ngIf="kidsVideoForm.controls['videolink']?.touched && kidsVideoForm.controls['videolink']?.hasError('required')"> Video link Is required</mat-error>
-                </mat-form-field>
-            </div>
-            <div class="form-group">
-                <mat-form-field class="half-with">
-                    <label > Videlo Description</label>
-                    <input matInput placeholder="Enter Your Video List" name="description" [(ngModel)]="newKidsVideo.description" required>
-                    <mat-error *ngIf="kidsVideoForm.controls['description']?.touched && kidsVideoForm.controls['description']?.hasError('required')"> Description is required</mat-error>
-                </mat-form-field>
-            </div>
-            <div class="form-group">
-                <mat-form-field class="half-width">
-                    <mat-label> Choose a Date</mat-label>
-                    <input matInput required name="createDate" [(ngModel)]="newKidsVideo.createDate" [matDatepicker]="createDatepicker" minlength="3" placeholder="Select">
-                    <mat-hint>MM/DD/YYYY</mat-hint>
-                    <mat-datepicker-toggle matIconSuffix [for]="createDatepicker"></mat-datepicker-toggle>
-                    <mat-datepicker #createDatepicker></mat-datepicker>
-                </mat-form-field>
-            </div>
-            <div class="form-group">
-                <button mat-raised-button color="primary" [disabled]="!kidsVideoForm.valid"> Add New Video</button>
-            </div>
-        </form>
-    </mat-card-content>
-</mat-card> -->
-
+<!-- 
 <mat-card>
     <mat-card-header>
         <mat-card-title>Add  new Video </mat-card-title>
     </mat-card-header>
+    <div class="form-group">
+        <mat-form-field class="half-with">
+            <div *ngIf="videoData">
+                <h3>{{ videoData.snippet.title }}</h3>
+                <p>{{ videoData.snippet.description }}</p>
+                <p>Views: {{ videoData.statistics.viewCount }}</p>
+                <p>Likes: {{ videoData.statistics.likeCount }}</p>
+              </div>
+        </mat-form-field>
+    </div>
     <mat-card-content>
         <form #kidsVideoForm ="ngForm" (ngSubmit)="saveKidsVideo()">
             <div class="form-group">
@@ -45,6 +20,9 @@
                     <label > Videlo link</label>
                     <input matInput placeholder="Enter Your Video List" name="videolink" [(ngModel)]="newKidsVideo.userId" required>
                     <mat-error *ngIf="kidsVideoForm.controls['videolink']?.touched && kidsVideoForm.controls['videolink']?.hasError('required')"> Video link Is required</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <button mat-raised-button color="primary" [disabled]="!kidsVideoForm.valid"> Add New Video</button>
                 </mat-form-field>
             </div>
             <div class="form-group">
@@ -66,4 +44,49 @@
             </div>
         </form>
     </mat-card-content>
-</mat-card>
+</mat-card> -->
+
+<div class="container">
+    <h2>YouTube Metadata Fetcher</h2>
+    <mat-form-field appearance="fill" class="input-field">
+      <mat-label>Enter YouTube Link</mat-label>
+      <input matInput [(ngModel)]="youtubeLink" placeholder="Paste YouTube URL here" />
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="fetchMetadata()">Get Metadata</button>
+</div>
+    <div *ngIf="videoData" class="chat-box">
+      <div class="message">
+        <h3>Title: {{ videoData.snippet.title }}</h3>
+        <p>Description: {{ videoData.snippet.description }}</p>
+        <p>Views: {{ videoData.statistics.viewCount }}</p>
+        <p>Likes: {{ videoData.statistics.likeCount }}</p>
+      </div> 
+<!--   
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Add  new Video </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form #kidsVideoForm ="ngForm" (ngSubmit)="saveKidsVideo()">
+                <div class="form-group">
+                    <mat-form-field class="full-width">
+                        <label > Video title</label>
+                        <input matInput placeholder="Enter Your Video List" name="title" [(ngModel)]="newKidsVideo.title" required>
+                        <mat-error *ngIf="kidsVideoForm.controls['title']?.touched && kidsVideoForm.controls['title']?.hasError('required')"> Description is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-group">
+                    <mat-form-field class="full-width description">
+                        <label > Videlo body</label>
+                        <textarea matInput placeholder="Enter Your Video List" name="body" [(ngModel)]="newKidsVideo.description" required></textarea>
+                        <mat-error *ngIf="kidsVideoForm.controls['body']?.touched && kidsVideoForm.controls['body']?.hasError('required')"> Description is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-group">
+                    <button mat-raised-button color="primary" [disabled]="!kidsVideoForm.valid"> Add New Video</button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+     -->
+  </div>
