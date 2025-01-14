@@ -62,6 +62,25 @@
       <!--   <p>Views: {{ videoData.statistics.viewCount }}</p>
         <p>Likes: {{ videoData.statistics.likeCount }}</p> -->
       </div> 
+       <!-- Dropdown for categories -->
+    <mat-form-field appearance="fill" class="dropdown-field">
+      <mat-label>Category</mat-label>
+      <mat-select [(ngModel)]="videoData.categories" name="categories" required >
+        <mat-option *ngFor="let category of categories" [value]="category">
+          {{ category }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Dropdown for IsActive Status -->
+    <mat-form-field appearance="fill" class="dropdown-field">
+      <mat-label>Status</mat-label>
+      <mat-select [(ngModel)]="videoData.isActive" name="isActive" required>
+        <mat-option [value]="true">Active</mat-option>
+        <mat-option [value]="false">Inactive</mat-option>
+      </mat-select>
+    </mat-form-field>
+
       <div class="form-group">
         <button mat-raised-button color="primary" [disabled]="!kidsVideoForm.valid"> Add New Video</button>
     </div>

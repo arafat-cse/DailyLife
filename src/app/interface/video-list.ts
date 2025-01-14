@@ -5,8 +5,8 @@ export interface videoList{
     description: string;
     thumbnailUrl:string;
     videoUrl: string;
-    categories:string;
-    educationalTags:string;
+    categories:[];
+    educationalTags:[];
     isFavorite:boolean;
     isFeatured:boolean;
     isActive:boolean;

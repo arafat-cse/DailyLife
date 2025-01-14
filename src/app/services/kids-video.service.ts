@@ -45,6 +45,10 @@ export class KidsVideoService {
   createKidsVideo(VideoList: videoList): Observable<videoList> {
     const databaseId = environment.appwrite.databaseId;
     const collectionId = environment.appwrite.collectionId;
+    // Validate categories
+  // if (!Array.isArray(VideoList.categories)) {
+  //   throw new Error('Categories must be an array');
+  // }
     return from(
       
       this.databases.createDocument(
@@ -55,9 +59,14 @@ export class KidsVideoService {
           id: VideoList.id,
           userId: VideoList.userId,
           title: VideoList.title,
-           categories: VideoList.categories,
-           description: VideoList.description,
-       
+          description: VideoList.description,
+          categories: VideoList.categories,
+          thumbnailUrl: VideoList.thumbnailUrl,
+          videoUrl: VideoList.videoUrl,
+          educationalTags: VideoList.educationalTags,
+          isFavorite: VideoList.isFavorite,
+          isFeatured: VideoList.isFeatured,
+          isActive: VideoList.isActive,
          
           // body: VideoList.body,
         }

@@ -110,6 +110,7 @@ import { videoList } from '../../interface/video-list';
 export class AddComponent {
   youtubeLink: string = '';
   videoData: any = null;
+  categories: string[] = ['Education', 'Entertainment', 'Science', 'Technology']; // Dropdown options
 
   private API_KEY = 'AIzaSyBuFDktc6TgABzOVeuFsWrF7piuDu8AKrE'; // Replace with your API key
   private API_URL = 'https://www.googleapis.com/youtube/v3/videos';
@@ -122,8 +123,8 @@ export class AddComponent {
     description: '',
     thumbnailUrl: '',
     videoUrl: '',
-    categories: '',
-    educationalTags: '',
+    categories: [],
+    educationalTags: [],
     isFavorite: true,
     isFeatured: false,
     isActive: true
