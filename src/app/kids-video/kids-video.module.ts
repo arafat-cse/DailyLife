@@ -21,6 +21,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 
 @NgModule({
@@ -34,7 +36,24 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
   imports: [
     CommonModule,
     KidsVideoRoutingModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatError,
+    MatSelectModule,
+    MatIconModule,
+    MatNativeDateModule,
+    MatSnackBarModule,
+    ReactiveFormsModule,
+    MatPaginator,
+    MatSort,
+    
+
   ]
 })
 export class KidsVideoModule { }

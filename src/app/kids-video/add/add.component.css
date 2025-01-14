@@ -1,0 +1,46 @@
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  .input-field {
+    width: 100%;
+  }
+  
+  .chat-box {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    text-align: left;
+  }
+  
+  .message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #e0f7fa;
+  }
+  
+.example-full-width{
+    width: 75%;
+}
+.error{
+    color: red;
+    padding: 5px;
+}
+.half-width{
+    width: 800px;
+}
+.half-width:last-child{
+    margin-left: 20px;
+}
+.full-width{
+    width: 100%;
+}
+.description{
+    height: 500px;
+}
