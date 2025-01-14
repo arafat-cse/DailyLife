@@ -116,7 +116,7 @@ export class AddComponent {
   private subscription: Subscription | undefined;
 
   newKidsVideo: videoList = {
-    id: '',
+    id: '1245863',
     userId: '',
     title: '',
     description: '',

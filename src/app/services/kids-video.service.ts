@@ -55,8 +55,8 @@ export class KidsVideoService {
           id: VideoList.id,
           userId: VideoList.userId,
           title: VideoList.title,
-          categories: VideoList.categories,
-          description: VideoList.description,
+           categories: VideoList.categories,
+           description: VideoList.description,
        
          
           // body: VideoList.body,
