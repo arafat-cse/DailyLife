@@ -107,16 +107,17 @@ import { videoList } from '../../interface/video-list';
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.css']
 })
-export class AddComponent {
+export class AddComponent  {
   youtubeLink: string = '';
   videoData: any = null;
   categories: string[] = ['Education', 'Entertainment', 'Science', 'Technology']; // Dropdown options
-
+  selectedCategories: string[] = []; // Tracks user-selected categories
   private API_KEY = 'AIzaSyBuFDktc6TgABzOVeuFsWrF7piuDu8AKrE'; // Replace with your API key
   private API_URL = 'https://www.googleapis.com/youtube/v3/videos';
   private subscription: Subscription | undefined;
 
   newKidsVideo: videoList = {
+    
     id: '1245863',
     userId: '',
     title: '',
@@ -161,8 +162,11 @@ export class AddComponent {
         (response: any) => {
           if (response.items.length > 0) {
             this.videoData = response.items[0];
+            this.newKidsVideo.id = this.videoData.id +1;
             this.newKidsVideo.title = this.videoData.snippet.title;
             this.newKidsVideo.description = this.videoData.snippet.description;
+            this.newKidsVideo.categories = this.videoData.categories;
+            console.log(this.videoData.snippet.categories);
             this.newKidsVideo.thumbnailUrl = this.videoData.snippet.thumbnails.high.url;
             this.newKidsVideo.videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
             console.log(this.newKidsVideo);
@@ -181,6 +185,15 @@ export class AddComponent {
       alert('Metadata is missing. Fetch metadata before saving.');
       return;
     }
+//     console.log('Categories:', this.categories);
+//     console.log('VideoData Categories:', this.videoData.categories);
+// this.categories= this.videoData.categories;
+// this.newKidsVideo.categories =this.categories;
+
+// this.newKidsVideo.categories = [this.videoData.categories]
+
+console.log(this.videoData.categories);
+this.newKidsVideo.categories = Array.isArray(this.videoData.categories) ? this.videoData.categories : [this.videoData.categories];
 
     this.subscription = this.kidsVideoService.createKidsVideo(this.newKidsVideo).subscribe(
       (data) => {

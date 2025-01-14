@@ -45,9 +45,11 @@
                     <a [routerLink]="['edit',element.id]">
                         <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="edit"></mat-icon>
                     </a>
-                    <a [routerLink]="['delete',element.id]">
+                    <!-- <a [routerLink]="['/delete',element.id]">
                         <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon>
-                    </a>
+                    </a> -->
+                    {{element.documentId}}
+                    <button (click)="delete(element.id)"> <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon></button>
                 </td>
             </ng-component>
 
@@ -60,3 +62,4 @@
 
     </mat-card-content>
 </mat-card>
+

@@ -63,15 +63,26 @@
         <p>Likes: {{ videoData.statistics.likeCount }}</p> -->
       </div> 
        <!-- Dropdown for categories -->
-    <mat-form-field appearance="fill" class="dropdown-field">
+    <!-- <mat-form-field appearance="fill" class="dropdown-field">
       <mat-label>Category</mat-label>
       <mat-select [(ngModel)]="videoData.categories" name="categories" required >
         <mat-option *ngFor="let category of categories" [value]="category">
           {{ category }}
         </mat-option>
       </mat-select>
-    </mat-form-field>
+    </mat-form-field> -->
 
+    <mat-form-field *ngIf="categories" appearance="fill" class="dropdown-field">
+      <mat-label>Category</mat-label>
+      <mat-select [(ngModel)]="videoData.categories" name="categories" multiple required >
+        <mat-option *ngFor="let category of categories" [value]="category" >
+          {{ category }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p *ngIf="!categories?.length">No categories available.</p>
+    
+    <!-- {{ videoData.categories }} -->
     <!-- Dropdown for IsActive Status -->
     <mat-form-field appearance="fill" class="dropdown-field">
       <mat-label>Status</mat-label>

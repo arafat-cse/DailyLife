@@ -56,6 +56,7 @@ export class KidsVideoService {
         collectionId,
         ID.unique(),
         {
+          
           id: VideoList.id,
           userId: VideoList.userId,
           title: VideoList.title,
@@ -111,7 +112,7 @@ export class KidsVideoService {
   }
 
   //delete Functionality
-  deleteKideVideo(id:number):Observable<void>
+  deleteKideVideo(id:string):Observable<void>
   {
     const url = `${this.apiUrl}/${id}`;
     return this.httpClient.delete<void>(url);

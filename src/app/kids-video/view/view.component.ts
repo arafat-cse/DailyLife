@@ -9,6 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { SelectionModel } from '@angular/cdk/collections';
+import { StickyDirection } from '@angular/cdk/table';
 
 @Component({
   selector: 'app-view',
@@ -51,7 +52,16 @@ export class ViewComponent {
       this.destory$.next();
       this.destory$.complete();
     }
-    
+    delete(id:string){
+      this.KidsVideoService.deleteKideVideo(id).subscribe({
+        next:(res) =>{
+          console.log(res);
+        },
+        error:(err)=>{
+          console.log(err);
+        }
+      })
+    }
     
   // Corrected ViewChild decorators:
   @ViewChild(MatPaginator) paginator!: MatPaginator;
