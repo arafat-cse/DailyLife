@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'add', component: AddComponent },
   { path: 'edit', component: EditComponent },
   { path: 'view', component: ViewComponent },
-  { path: 'delete/:id', component: DeleteComponent },
+  { path: 'delete/:$id', component: DeleteComponent },
   // { path: 'video-list', component: DeleteComponent },
 
 
