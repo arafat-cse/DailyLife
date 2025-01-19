@@ -56,7 +56,7 @@ export class KidsVideoService {
         collectionId,
         ID.unique(),
         {
-          
+          // $id: '',
           id: VideoList.id,
           userId: VideoList.userId,
           title: VideoList.title,
@@ -112,12 +112,19 @@ export class KidsVideoService {
   }
 
   //delete Functionality
-  deleteKideVideo(id:string):Observable<void>
-  {
-    const url = `${this.apiUrl}/${id}`;
-    return this.httpClient.delete<void>(url);
+  deleteKideVideo(documentId: string): Observable<void> {
+    const databaseId = environment.appwrite.databaseId;
+    const collectionId = environment.appwrite.collectionId;
+  
+    return from(
+      this.databases.deleteDocument(databaseId, collectionId, documentId)
+    ).pipe(
+      map(() => {
+        // No need to return anything
+      })
+    );
   }
-
+  
 
 
 }

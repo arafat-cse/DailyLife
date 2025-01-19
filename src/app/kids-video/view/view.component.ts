@@ -37,7 +37,7 @@ export class ViewComponent {
       })
     }
     dataSource = new MatTableDataSource(this.kidsVideoDetails);
-    displayColumns = ["id","userId","title","categories","description","actions"]
+    displayColumns = ["documentId","id","userId","title","categories","description","actions"]
 
 
     selection = new SelectionModel(true,[]);
@@ -52,15 +52,31 @@ export class ViewComponent {
       this.destory$.next();
       this.destory$.complete();
     }
-    delete(id:string){
+    // delete($id:string){
+    //   this.KidsVideoService.deleteKideVideo($id).subscribe({
+    //     next:(res) =>{
+    //       console.log(res);
+    //     },
+    //     error:(err)=>{
+    //       console.log(err);
+    //     }
+    //   })
+    // }
+    delete(id: string) {
       this.KidsVideoService.deleteKideVideo(id).subscribe({
-        next:(res) =>{
-          console.log(res);
+        next: (res) => {
+          console.log('Video deleted successfully:', res);
+          alert('Video deleted successfully!'); // মেসেজ দেখানোর জন্য
+    
+          // টেবিল থেকে ভিডিও রিমুভ করুন
+          this.kidsVideoDetails = this.kidsVideoDetails.filter((video) => video.$id !== id);
+          this.KidsVideoService.getKidsVideo()
         },
-        error:(err)=>{
-          console.log(err);
-        }
-      })
+        error: (err) => {
+          console.error('Error while deleting the video:', err);
+          alert('Failed to delete the video. Please try again!'); // ত্রুটি দেখানোর জন্য
+        },
+      });
     }
     
   // Corrected ViewChild decorators:
